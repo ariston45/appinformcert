@@ -28,11 +28,6 @@
           <p class="empty-subtitle text-muted">
             We are sorry but the page you are looking for was not found
           </p>
-          <div class="empty-action">
-            <a href="{{ url('home') }}" class="btn btn-primary">
-              Take me home
-            </a>
-          </div>
         </div>
       </div>
     </div>

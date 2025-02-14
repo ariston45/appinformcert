@@ -17,8 +17,8 @@ use App\Http\Controllers\LandingController;
 */
 // die();
 Route::get('/', function () {
-	# return view('welcome');
-	return view('contents.homepage.index');
+	// return view('welcome');
+	return view('errors.404');
 });
 Route::get('build', [HomeController::class, 'index'])->name('build');
 Route::get('login', [AuthController::class,'index'])->name('login');

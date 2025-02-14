@@ -15,6 +15,11 @@ use App\Http\Controllers\TestController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::prefix('/')->group(function () {
+	Route::get('digital-transcript/{id}', [HomeController::class, 'viewCert']);
+});
+// ****************************************************************************************************************************************************************************************************
 Route::group(['middleware' => ['auth']], function () {
 	#TEST Modul
 	# Admin 
