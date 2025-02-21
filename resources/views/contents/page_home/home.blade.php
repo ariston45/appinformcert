@@ -29,40 +29,41 @@
     </style>
     <style>
       @media(max-width: 1080px){
-        table {
+        #score_table table {
           width: 80%;
           border-collapse: collapse;
           background: white;
         }
       }
       @media(min-width: 1081px){
-        table {
+        #score_table table {
           width: 50%;
           border-collapse: collapse;
           background: white;
         }
       }
     
-      th,
-      td {
+      #score_table th,
+      #score_table td {
         border: 1px solid #ddd;
         padding: 4px;
         text-align: left;
       }
     
-      th {
+      #score_table th {
         background-color: #616161;
         color: white;
         text-align: center;
       }
     
-      tr:nth-child(even) {
+      #score_table tr:nth-child(even) {
         background-color: #f2f2f2;
       }
     
-      tr:hover {
+      #score_table tr:hover {
         background-color: #ddd;
       }
+      
       .score_container {
         display: flex;
         justify-content: center;
@@ -91,7 +92,7 @@
         <div class="page-body mb-0">
           <div class="container-xl">
             <div class="card card-lg">
-              <div class="card-body bg-blue" id="card-body-top">
+              {{-- <div class="card-body bg-blue" id="card-body-top">
                 <div class="row">
                   <div class="col-sm-6 img-logo">
                     <img src="{{ asset('/static/trust_logo.png') }}" alt="" style=" max-width: 300px;">
@@ -100,38 +101,49 @@
                     <img src="{{ asset('/static/ms_partner.png') }}" alt="" style=" max-width: 300px;">
                   </div>
                 </div>
-              </div>
-              <div class="card-body pt-3">
+              </div> --}}
+              <img src="{{ asset('/static/Header_2.png') }}" alt="">
+              <div class="card-body pt-3 pb-0">
                 <div class="row">
                   <div class="col-12 text-center">
                     <p class="h1">
                       <strong>
-                        Authenticated Digital Transcript of Certification
+                        Certificate of Achievement
                       </strong>
                     </p>
-                    <p class="h3">
-                      {{ $data['date_exam'] }}
-                    </p>
+                    <p class="mb-0"><i>Awarded to:</i></p>
                     <p class="h2">
                       {{ $data['name'] }}
                     </p>
+                    <p class="mb-0"><i>Issued Date:</i></p>
                     <p class="h3">
-                      {{ $data['institution'] }}
+                      {{ $data['date_exam'] }}
                     </p>
-                    <p>
+                    <p class="mb-0"><i>Certificate No:</i></p>
+                    <p class="h3">
+                      {{ $data['number'] }}
+                    </p>
+                    <p class="mt-3 mb-0">
                       <i>
-                        This real-time Action Program Digital Transcript is derived from a global database which and authenticates certification exams administered by Trust Training Partner.
+                        who has successfully achieved all the requirements of the following professional competency training and assesment titled: 
                       </i>
+                    </p>
+                    <p class="h1 mb-3">
+                      Microsoft Office Desktop Application
                     </p>
                   </div>
                 </div>
                 <div class="row">
-                  <span class="bg-blue pt-1 pb-1 mb-3">
-                    <p class="h2 text-center m-0 text-light">
+                  <span class="pt-1 pb-1 mb-3">
+                    <p class="text-center m-0">
                       @if ($data['par_type'] == 'GOLD' || $data['par_type'] == 'SILVER')
-                        Graded
+                        <i>
+                          Graded:
+                        </i>
                       @else
-                        Score Transcript
+                        <i>
+                          Subject Score:
+                        </i>
                       @endif
                     </p>
                   </span>
@@ -141,21 +153,21 @@
                     @if ($data['cst_type'] == 'GOLD_SILVER')
                       @if ($data['par_type'] == 'GOLD')
                         <div id="img-gold" class="mb-3">
-                          <img src="{{ asset('static/Excelent - Gold.png') }}" alt="" style="max-height: 150px;">
+                          <img src="{{ asset('static/Excelent - Gold.png') }}" alt="" style="max-height: 130px;">
                         </div>
                         <div>
                           <p class="h3"> Have completed the ACTION PROGRAM exam with an excellent grade</p>
                         </div>
                       @elseif ($data['par_type'] == 'SILVER')
                         <div id="img-gold" class="mb-3">
-                          <img src="{{ asset('static/Good - Silver.png') }}" alt="" style="max-height: 150px;">
+                          <img src="{{ asset('static/Good - Silver.png') }}" alt="" style="max-height: 130px;">
                         </div>
                         <div>
-                          <p class="h3"> Have completed the ACTION PROGRAM exam with a good grade</p>
+                          <p class="h3"> Have completed the ACTION PROGRAM exam with a good grade.</p>
                         </div>
                       @endif
                     @else
-                      <table>
+                      <table id="score_table">
                         <tr>
                           <th>No</th>
                           <th>Subjects</th>
@@ -178,6 +190,28 @@
                         </tr>
                       </table>
                     @endif
+                  </div>
+                </div>
+              </div>
+              <div class="card-body bg-dark-lt pt-3 pb-2">
+                <table class="mb-2" style="border: none;">
+                  <tr>
+                    <td style="vertical-align: top;"><p class="mb-0"><i>Signed By:</i></p></td>
+                    <td style="padding-left: 10px;"><p class="mb-0">MELVIN OET. Bcom MBA MCT</p><p class="mb-0">CHIEF INNOVATION OFFICER</p></td>
+                  </tr>
+                </table>
+                <table class="mb-2" style="border: none;">
+                  <tr>
+                    <td style="vertical-align: top;"><p class="mb-0"><i>In Partnership with:</i></p></td>
+                    <td style="padding-left: 10px;"><p class="mb-0"><strong>{{ $data['institution'] }}</strong> </p></td>
+                  </tr>
+                </table>
+              </div>
+              <img src="{{ asset('/static/footer_1.png') }}" alt="">
+              <div  class="card-body pt-1 pb-1">
+                <div class="row">
+                  <div class="col-sm-12 text-center">
+                    <p class="mb-0"><i>If feel that this information is not correct, please contact us at info@trustunified.com.</i></p>
                   </div>
                 </div>
               </div>

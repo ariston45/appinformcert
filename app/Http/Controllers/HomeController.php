@@ -30,6 +30,7 @@ class HomeController extends Controller
 				'word' => $data_participant->par_val_word,
 				'excel' => $data_participant->par_val_excel,
 				'powerpoint' => $data_participant->par_val_powerpoint,
+				'number' => $data_participant->par_cert_number,
 			];
 			return view('contents.page_home.home',compact('data_participant','data'));
 		}

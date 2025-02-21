@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 #*******************************************
 use App\Http\Controllers\Api\ManageController;
-
+use App\Http\Controllers\AuthController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,8 +16,13 @@ use App\Http\Controllers\Api\ManageController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->post('/data_general', function (Request $request) {
+//     return $request->user();
+// });
+#use auth
+Route::middleware('auth:sanctum')->post('/data_general', [AuthController::class, 'station']);
+# base
+Route::post('auth_access_login', [AuthController::class, 'Process_login_api']);
+Route::post('auth_access_logout', [AuthController::class, 'Process_logout_api']);
 Route::match(['get','post'],'data_gold_silver', [ManageController::class, 'actionStoreGoldSilver']);
-Route::match(['get', 'post'], 'data_general', [ManageController::class, 'actionStoreGeneral']);
+// Route::match(['get', 'post'], 'data_general', [ManageController::class, 'actionStoreGeneral']);
