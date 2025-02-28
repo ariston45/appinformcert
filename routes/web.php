@@ -18,7 +18,7 @@ use App\Http\Controllers\LandingController;
 // die();
 Route::get('/', function () {
 	// return view('welcome');
-	return view('errors.404');
+	return redirect()->away('https://education.trusttrain.com/');
 });
 Route::get('build', [HomeController::class, 'index'])->name('build');
 Route::get('login', [AuthController::class,'index'])->name('login');

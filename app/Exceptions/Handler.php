@@ -38,4 +38,12 @@ class Handler extends ExceptionHandler
             //
         });
     }
+    public function render($request, Throwable $exception)
+    {
+        if ($exception instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {
+            return redirect()->away('https://education.trusttrain.com/'); // Ganti dengan URL tujuan
+        }
+        return parent::render($request, $exception);
+    }
+
 }
