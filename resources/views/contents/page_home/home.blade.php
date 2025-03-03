@@ -4,6 +4,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <link rel="icon" type="image/x-icon" href="{{ url('Trust_logo.png') }}">
     <title>Authentication Digital Transcript</title>
     <link type="text/css" rel="stylesheet" href="{{ asset('dist/css/tabler.min.css') }}" />
     <link type="text/css" rel="stylesheet" href="{{ asset('dist/css/tabler-flags.css') }}" />

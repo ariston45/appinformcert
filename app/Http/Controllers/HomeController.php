@@ -19,7 +19,8 @@ class HomeController extends Controller
 		$data_participant = Par_participant::join('cst_customers', 'par_participants.par_customer_id','=', 'cst_customers.cst_id')
 		->where('par_hash_id',$code)->first();
 		if ($data_participant == null) {
-			return view('errors.404');
+			// return view('errors.404');
+			return redirect()->to('https://education.trusttrain.com/');
 		}else{
 			$data = [
 				'date_exam' => date('F d, Y', strtotime($data_participant->par_exam_date)),

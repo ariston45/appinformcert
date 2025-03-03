@@ -30,11 +30,11 @@
           <div class="col-lg">
             <div class="container-tight">
               <div class="text-center mb-4">
-                <a href="." class="navbar-brand navbar-brand-autodark"><img src="{{ asset('static/trustcrm.png') }}" height="60" alt=""></a>
+                {{-- <a href="." class="navbar-brand navbar-brand-autodark"><img src="{{ asset('static/trustcrm.png') }}" height="60" alt=""></a> --}}
               </div>
               <div class="card card-md">
                 <div class="card-body">
-                  <h2 class="h2 text-center mb-4">Sign In to Your Account</h2>
+                  {{-- <h2 class="h2 text-center mb-4">Sign In to Your Account</h2> --}}
                   <form action="{{url('proses_login')}}" method="POST" autocomplete="off" novalidate>
                     {{ csrf_field() }}
                     <div class="mb-3">
@@ -76,9 +76,6 @@
               <div class="text-center text-muted mt-3">
               </div>
             </div>
-          </div>
-          <div class="col-lg d-none d-lg-block">
-            <img src="./static/illustrations/undraw_secure_login_pdn4.svg" height="300" class="d-block mx-auto" alt="">
           </div>
         </div>
       </div>

@@ -20,8 +20,8 @@ Route::get('/', function () {
 	// return view('welcome');
 	return redirect()->away('https://education.trusttrain.com/');
 });
-Route::get('build', [HomeController::class, 'index'])->name('build');
-Route::get('login', [AuthController::class,'index'])->name('login');
+Route::get('data_mgn/check_in', [AuthController::class,'index'])->name('login');
 Route::get('logout', [AuthController::class,'logout'])->name('logout');
 Route::post('proses_login',[AuthController::class,'proses_login'])->name('proses_login');
+// Route::get('build', [HomeController::class, 'index'])->name('build');
 // Route::get('init-user', [ProfileController::class,'IdenUser'])->name('init-user');
