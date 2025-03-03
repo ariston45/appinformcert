@@ -25,4 +25,4 @@ Route::middleware('auth:sanctum')->post('/data_general', [AuthController::class,
 Route::post('auth_access_login', [AuthController::class, 'Process_login_api']);
 Route::post('auth_access_logout', [AuthController::class, 'Process_logout_api']);
 Route::match(['get','post'],'data_gold_silver', [ManageController::class, 'actionStoreGoldSilver']);
-// Route::match(['get', 'post'], 'data_general', [ManageController::class, 'actionStoreGeneral']);
+Route::match(['get', 'post'], 'data_general', [ManageController::class, 'actionStoreGeneral']);
