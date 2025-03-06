@@ -33,6 +33,7 @@ class HomeController extends Controller
 				'powerpoint' => $data_participant->par_val_powerpoint,
 				'number' => $data_participant->par_cert_number,
 			];
+			// die();
 			return view('contents.page_home.home',compact('data_participant','data'));
 		}
 	}

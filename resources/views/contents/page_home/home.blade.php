@@ -46,7 +46,7 @@
     
       #score_table th,
       #score_table td {
-        border: 1px solid #ddd;
+        border: 1px solid #616161;
         padding: 4px;
         text-align: left;
       }
@@ -60,10 +60,6 @@
       #score_table tr:nth-child(even) {
         background-color: #f2f2f2;
       }
-    
-      #score_table tr:hover {
-        background-color: #ddd;
-      }
       
       .score_container {
         display: flex;
@@ -76,33 +72,9 @@
   <body >
     <div class="page">
       <div class="page-wrapper">
-        {{-- <div class="page-header d-print-none">
-          <div class="container-xl">
-            <div class="row g-2 align-items-center">
-              <div class="col">
-                <h2 class="page-title">
-                  Trust System Indonesia
-                </h2>
-              </div>
-              <div class="col-auto ms-auto d-print-none">
-                
-              </div>
-            </div>
-          </div>
-        </div> --}}
         <div class="page-body mb-0">
           <div class="container-xl">
             <div class="card card-lg">
-              {{-- <div class="card-body bg-blue" id="card-body-top">
-                <div class="row">
-                  <div class="col-sm-6 img-logo">
-                    <img src="{{ asset('/static/trust_logo.png') }}" alt="" style=" max-width: 300px;">
-                  </div>
-                  <div class="col-sm-6 text-end img-logo">
-                    <img src="{{ asset('/static/ms_partner.png') }}" alt="" style=" max-width: 300px;">
-                  </div>
-                </div>
-              </div> --}}
               <img src="{{ asset('/static/Header_2.png') }}" alt="">
               <div class="card-body pt-3 pb-0">
                 <div class="row">
@@ -137,7 +109,7 @@
                 <div class="row">
                   <span class="pt-1 pb-1 mb-3">
                     <p class="text-center m-0">
-                      @if ($data['par_type'] == 'GOLD' || $data['par_type'] == 'SILVER')
+                      @if ($data['cst_type'] == 'GOLD_SILVER')
                         <i>
                           Graded:
                         </i>
@@ -168,11 +140,11 @@
                         </div>
                       @endif
                     @else
-                      <table id="score_table">
+                      <table id="score_table" class="mb-3">
                         <tr>
-                          <th>No</th>
-                          <th>Subjects</th>
-                          <th>Score</th>
+                          <th style="min-width: 60px;">No</th>
+                          <th style="min-width: 220px;">Subjects</th>
+                          <th style="min-width: 90px;">Score</th>
                         </tr>
                         <tr>
                           <td style="text-align: center;">1</td>
