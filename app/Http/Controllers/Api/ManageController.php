@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cert_category;
 use Illuminate\Http\Request;
 use App\Models\Cst_customer;
 use App\Models\Par_participant;
@@ -36,6 +37,9 @@ class ManageController extends Controller
 					"rec_note" => $value->rec_note,
 					"rec_name" => $value->rec_name,
 					"rec_count" => $value->rec_count,
+					"rec_cert_type" => $value->rec_cert_type,
+					"rec_option" => $value->rec_option,
+					"rec_template" => $value->rec_template,
 				];
 			}elseif ($key == 'data_gold') {
 				$data1 = $value;
@@ -51,6 +55,7 @@ class ManageController extends Controller
 				"par_cert_number" => $value->par_cert_number,
 				"par_name" => $value->par_name,
 				"par_exam_date"=> $value->par_exam_date_raw,
+				"par_exam_date_scd" => $value->par_exam_date_scd_raw,
 				"par_hash_id" => $value->par_hash_id,
 				"par_type" =>  $value->par_type,
 				"par_val_word" => $value->par_val_word,
@@ -66,6 +71,7 @@ class ManageController extends Controller
 				"par_cert_number" => $value->par_cert_number,
 				"par_name" => $value->par_name,
 				"par_exam_date" => $value->par_exam_date_raw,
+				"par_exam_date_scd" => $value->par_exam_date_scd_raw,
 				"par_hash_id" => $value->par_hash_id,
 				"par_type" =>  $value->par_type,
 				"par_val_word" => $value->par_val_word,
@@ -117,6 +123,9 @@ class ManageController extends Controller
 					"rec_note" => $value->rec_note,
 					"rec_name" => $value->rec_name,
 					"rec_count" => $value->rec_count,
+					"rec_cert_type" => $value->rec_cert_type,
+					"rec_option" => $value->rec_option,
+					"rec_template" => $value->rec_template,
 				];
 			} elseif ($key == 'data_general') {
 				$data1 = $value;
@@ -130,6 +139,7 @@ class ManageController extends Controller
 				"par_cert_number" => $value->par_cert_number,
 				"par_name" => $value->par_name,
 				"par_exam_date" => $value->par_exam_date_raw,
+				"par_exam_date_scd" => $value->par_exam_date_scd_raw,
 				"par_hash_id" => $value->par_hash_id,
 				"par_type" =>  $value->par_type,
 				"par_val_word" => $value->par_val_word,
@@ -137,7 +147,7 @@ class ManageController extends Controller
 				"par_val_powerpoint" => $value->par_val_powerpoint,
 			];
 		}
-		// dd($data_customer);
+		// DB::enableQueryLog();
 		Cst_customer::upsert(
 			$data_customer,
 			['cst_id'],
@@ -146,12 +156,29 @@ class ManageController extends Controller
 		Rec_gen_record::upsert(
 			$data_record,
 			['rec_id'],
-			['rec_customer_id', 'rec_date', 'rec_sync_date', 'rec_note', 'rec_name', 'rec_count'],
+			['rec_customer_id', 'rec_date', 'rec_sync_date', 'rec_note', 'rec_name', 'rec_count', 'rec_cert_type', 'rec_option', 'rec_template'],
 		);
 		Par_participant::upsert(
 			$data_general,
 			['par_id'],
-			['par_customer_id', 'par_rec_id', 'par_cert_number', 'par_name', 'par_type', 'par_exam_date', 'par_hash_id', 'par_val_word', 'par_val_excel', 'par_val_powerpoint']
+			['par_customer_id', 'par_rec_id', 'par_cert_number', 'par_name', 'par_type', 'par_exam_date', 'par_exam_date_scd', 'par_hash_id', 'par_val_word', 'par_val_excel', 'par_val_powerpoint']
+		);
+		// dd(DB::getQueryLog());
+	}
+	/* Tags:... */
+	public function actionStoreCertSetting(Request $request)
+	{
+		DB::setDefaultConnection('mysql_online');
+		$raw_data = json_decode($request->getContent());
+		foreach ($raw_data[0] as $key => $value) {
+			$data[$key] = [
+				'cert_id' => $value->cert_id,
+				'cert_type' => $value->cert_type,
+				'cert_title' => $value->cert_title,
+			];
+		}
+		Cert_category::upsert(
+			$data,['cert_id'],['cert_type','cert_title']
 		);
 	}
 }
