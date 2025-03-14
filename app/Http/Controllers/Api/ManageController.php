@@ -92,12 +92,12 @@ class ManageController extends Controller
 		Par_participant::upsert(
 			$data_gold,
 			['par_id'],
-			['par_customer_id','par_rec_id','par_cert_number','par_name','par_type','par_exam_date','par_hash_id','par_val_word','par_val_excel','par_val_powerpoint']
+			['par_customer_id','par_rec_id','par_cert_number','par_name','par_type','par_exam_date','par_exam_date_scd','par_hash_id','par_val_word','par_val_excel','par_val_powerpoint']
 		);
 		Par_participant::upsert(
 			$data_silver,
 			['par_id'],
-			['par_customer_id','par_rec_id','par_cert_number','par_name','par_type','par_exam_date','par_hash_id','par_val_word','par_val_excel','par_val_powerpoint']
+			['par_customer_id','par_rec_id','par_cert_number','par_name','par_type','par_exam_date','par_exam_date_scd','par_hash_id','par_val_word','par_val_excel','par_val_powerpoint']
 		);
 	}
 	public function actionStoreGeneral(Request $request)

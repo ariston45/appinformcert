@@ -81,7 +81,7 @@
                   <div class="col-12 text-center">
                     <p class="h1">
                       <strong>
-                        Certificate of Achievement
+                        {{ $data['cert_type'] }}
                       </strong>
                     </p>
                     <p class="mb-0"><i>Awarded to:</i></p>
@@ -102,7 +102,7 @@
                       </i>
                     </p>
                     <p class="h1 mb-3">
-                      Microsoft Office Desktop Application
+                      {{ $data['title'] }}
                     </p>
                   </div>
                 </div>
